@@ -8,7 +8,7 @@ function [errE,errR] = derivativeInstability(f, fD, x0, h)
 exactD = fD(x0);
 approxD = (f(x0+h)-f(x0-h))/(2*h);
 
-errE = Error(exactD,approxD,'e');
+errE = Error(exactD,approxD,'a');
 errR = Error(exactD,approxD,'r');
 
 return;

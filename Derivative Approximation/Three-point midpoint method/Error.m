@@ -1,4 +1,4 @@
-%function that returns either the exact (type = 'e') or relative
+%function that returns either the absolute (type = 'a') or relative
 % (type = 'r') error
 %
 %input: exact = exact value, approx = approximate value, type explained
@@ -7,7 +7,7 @@
 function err = Error(exact, approx, type)
 
 err = 0;
-if type == 'e'
+if type == 'a'
     err = approx - exact;
 elseif type == 'r'
     err = (approx - exact)/exact;

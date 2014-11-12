@@ -1,15 +1,16 @@
 %script to show error of using finite difference for derivative
-%calculated error = roundoff + truncation = (2^-52*A*10^k) - ((C/6)*10^-2k)
-% where f(x0)~A, f'''(x0)~C, h=10^-k
+%calculated error = roundoff + truncation = 10^(-17+p-l)
+% where f~10^p, h~10^l, f'~10^m, f'''~10^n
+% Calculated l for minimum error: l = log(3)/3 - 17/3
 %
-%script uses f = exp and x0 = 1 so that C/A~1
+%script uses f = exp and x0 = 0 so that p=m=n=0
 
 h = logspace(-7,-4,800);
 absolute = @(x) abs(x);
 E = @(x) exp(x);
-DI = @(h) derivativeInstability(E,E,0,h);
+DI = @(l) derivativeInstability(E,E,0,l);
 errE = arrayfun(DI,h);
 errEa = arrayfun(absolute,errE);
-FDME = @(h) firstDerMidpointError(1,1,h);
+FDME = @(l) firstDerMidpointError(1,1,l);
 theoryErr = arrayfun(FDME,h);
 loglog(h,errEa,h,theoryErr);
