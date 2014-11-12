@@ -1,5 +1,5 @@
 %script to show error of using finite difference for derivative
-%calculated error = roundoff + truncation = 10^(-17+p-l)
+%calculated error = roundoff + truncation = 10^(-17+p-l) + (1/6)*10^(n+2l)
 % where f~10^p, h~10^l, f'~10^m, f'''~10^n
 % Calculated l for minimum error: l = log(3)/3 - 17/3
 %
